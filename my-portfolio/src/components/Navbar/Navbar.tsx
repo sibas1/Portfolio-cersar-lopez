@@ -20,11 +20,12 @@ const Navbar: React.FC<NavbarProps> = ({ onLinkClick }) => {
       <br />
       <ul >
         {links.map((link) => (
-          <li key={link.id} >
-            <button
+          <li key={link.id} className="m-1">
+            <button className="shadow-md p-1 rounded-md"
             style={{ backgroundColor:link.color}}
 
               onClick={() => onLinkClick(link.id, link.color)}
+              className="transition-transform hover:translate-x-1 active:translate-x-2 duration-200"
             >
               {link.label}
             </button>

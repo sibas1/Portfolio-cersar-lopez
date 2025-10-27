@@ -24,7 +24,7 @@ const Page = () => {
     <div className="flex flex-col w-full min-h-screen max-h-screen">
       <div
         style={{ backgroundColor: color }}
-        className="flex flex-col border-2 border-white m-2 min-h-[95vh] max-h-[95vh]"
+        className="flex flex-col m-2 border-2 border-white min-h-[95vh] max-h-[95vh] transition-colors duration-700 ease-in-out"
       >
         <div className="flex flex-col p-4 w-full">
           <h1 className="items-start mb-4 font-bold text-4xl">Cesar Lopez</h1>

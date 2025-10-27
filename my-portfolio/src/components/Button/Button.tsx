@@ -2,7 +2,7 @@ import React from 'react'
 
 function Button() {
   return (
-    <button>
+    <button className='p-50'>
     </button>
   )
 }
