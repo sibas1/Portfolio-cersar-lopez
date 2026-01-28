@@ -1,37 +1,59 @@
 "use client";
 
 import React from "react";
+type SectionId = "home" | "about" | "projects" | "contact";
 
 interface NavbarProps {
-  onLinkClick: (id: string, color: string) => void;
+  onLinkClick: (id: SectionId) => void;
+  activeSection: SectionId;
+  accentColor: string;
+  buttonColor: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onLinkClick }) => {
-  const links = [
-    { id: "home", label: "Home", color: "#30303B" },
-    { id: "about", label: "About", color: "#302F2D" },
-    { id: "contact", label: "Contact", color: "#200E18" },
-    { id: "projects", label: "Projects", color: "#1E2329" },
-  ];
 
-  return (
-    <nav className="flex-row justify-center items-center">
-      <div>Welcome</div>
-      <br />
-      <ul >
-        {links.map((link) => (
-          <li key={link.id} className="m-1">
-            <button className="shadow-gray-800 shadow-md p-1 rounded-md transition-transform hover:translate-x-1 active:translate-x-2 duration-200"
-            style={{ backgroundColor:link.color}}
+const Navbar: React.FC<NavbarProps> = ({
+  onLinkClick,
+  activeSection,
+  accentColor,
+  buttonColor,
+}) => {
+const links: { id: SectionId; label: string }[] = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "contact", label: "Contact" },
+  { id: "projects", label: "Projects" },
+];
 
-              onClick={() => onLinkClick(link.id, link.color)}
-            >
-              {link.label}
-            </button>
-          </li>
-        ))}
+  return (<nav>
+
+      <ul>
+        {links.map((link) => {
+          const isActive = activeSection === link.id;
+
+          return (
+            <li key={link.id} className="m-1">
+              <button
+                onClick={() => onLinkClick(link.id)}
+                style={{
+                  backgroundColor: buttonColor,
+                  color: isActive ? accentColor : "inherit",
+                }}
+                className={`
+                  px-3 py-1 rounded-md border
+                  border-transparent 
+                  transition-all duration-300
+                  hover:translate-x-1
+                  ${isActive ? "font-semibold" : "opacity-70"}
+                `}
+              >
+                {link.label}
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
 };
+
 export default Navbar;
