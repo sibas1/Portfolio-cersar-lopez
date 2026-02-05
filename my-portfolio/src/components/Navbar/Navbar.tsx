@@ -1,31 +1,34 @@
 "use client";
 
 import React from "react";
+import { getThemeForSection } from "../../config/themes";
 type SectionId = "home" | "about" | "projects" | "contact";
 
 interface NavbarProps {
   onLinkClick: (id: SectionId) => void;
   activeSection: SectionId;
-  accentColor: string;
-  buttonColor: string;
+  colors: {
+    bg: string;
+    text: string;
+    accent: string;
+    buttons: string;
+  };
 }
-
 
 const Navbar: React.FC<NavbarProps> = ({
   onLinkClick,
   activeSection,
-  accentColor,
-  buttonColor,
+  colors,
 }) => {
-const links: { id: SectionId; label: string }[] = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "contact", label: "Contact" },
-  { id: "projects", label: "Projects" },
-];
+  const links: { id: SectionId; label: string }[] = [
+    { id: "home", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "contact", label: "Contact" },
+    { id: "projects", label: "Projects" },
+  ];
 
-  return (<nav>
-
+  return (
+    <nav>
       <ul>
         {links.map((link) => {
           const isActive = activeSection === link.id;
@@ -33,17 +36,18 @@ const links: { id: SectionId; label: string }[] = [
           return (
             <li key={link.id} className="m-1">
               <button
+                type="button"
                 onClick={() => onLinkClick(link.id)}
                 style={{
-                  backgroundColor: buttonColor,
-                  color: isActive ? accentColor : "inherit",
+                  backgroundColor: isActive ? colors.buttons : colors.bg,
+                  color: isActive ? colors.bg : colors.text,
+                  borderColor: colors.accent,
                 }}
                 className={`
                   px-3 py-1 rounded-md border
-                  border-transparent 
                   transition-all duration-300
-                  hover:translate-x-1
-                  ${isActive ? "font-semibold" : "opacity-70"}
+                  hover:translate-x-1 hover:shadow-lg
+                  ${isActive ? "font-semibold shadow-md" : "opacity-80 hover:opacity-100"}
                 `}
               >
                 {link.label}
@@ -57,3 +61,4 @@ const links: { id: SectionId; label: string }[] = [
 };
 
 export default Navbar;
+
