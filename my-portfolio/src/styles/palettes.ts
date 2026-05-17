@@ -3,7 +3,7 @@ import { themeColors } from "../config/themes";
 export const palettes = {
   dark: {
     home: {
-      bg: "#5D6063", // gris-800 - fondo como estaba
+      bg: "#4d515a", // gris-800 - fondo como estaba
       text: "#f3f4f6", // gris-100 - texto como estaba
       accent: "#ffffff", // blanco puro - título blanco
       buttons: "#ffffff", // blanco puro - botones blancos
@@ -36,7 +36,7 @@ export const palettes = {
       buttons: "#6b7280", // gris-500 - botones del mismo color que el título
     },
     about: {
-      bg: "#facc15", // amarillo-400 - punto medio brillante
+      bg: "#cedd21", // amarillo-400 - punto medio brillante
       text: "#ffffff", // blanco puro - texto blanco
       accent: "#ffffff", // blanco puro - título blanco
       buttons: "#ffffff", // blanco puro - botones blancos
