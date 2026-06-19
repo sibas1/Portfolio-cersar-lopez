@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { getThemeForSection } from "../../config/themes";
 type SectionId = "home" | "about" | "projects" | "contact";
 
 interface NavbarProps {

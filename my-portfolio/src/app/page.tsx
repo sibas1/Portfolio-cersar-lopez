@@ -1,6 +1,6 @@
 "use client";
 import { palettes } from "@/styles/palettes";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Section from "../components/Sections/Sections";
 type SectionId = "home" | "about" | "projects" | "contact";

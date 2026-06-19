@@ -1,57 +1,60 @@
-import { themeColors } from "../config/themes";
+export type PaletteMode = "dark" | "light";
+export type SectionPalette = {
+  bg: string;
+  text: string;
+  accent: string;
+  buttons: string;
+};
+
+const themePalettes: Record<string, { dark: SectionPalette; light: SectionPalette }> = {
+  tech: {
+    dark: { bg: "#0c4a6e", text: "#e0f2fe", accent: "#38bdf8", buttons: "#7dd3fc" },
+    light: { bg: "#f0f9ff", text: "#0369a1", accent: "#0284c7", buttons: "#0ea5e9" },
+  },
+  sunset: {
+    dark: { bg: "#7c2d12", text: "#ffedd5", accent: "#fb923c", buttons: "#fdba74" },
+    light: { bg: "#fff7ed", text: "#9a3412", accent: "#ea580c", buttons: "#f97316" },
+  },
+  forest: {
+    dark: { bg: "#14532d", text: "#dcfce7", accent: "#4ade80", buttons: "#86efac" },
+    light: { bg: "#f0fdf4", text: "#166534", accent: "#16a34a", buttons: "#22c55e" },
+  },
+  cosmic: {
+    dark: { bg: "#581c87", text: "#f3e8ff", accent: "#c084fc", buttons: "#d8b4fe" },
+    light: { bg: "#faf5ff", text: "#6b21a8", accent: "#9333ea", buttons: "#a855f7" },
+  },
+  coral: {
+    dark: { bg: "#7f1d1d", text: "#fee2e2", accent: "#f87171", buttons: "#fca5a5" },
+    light: { bg: "#fef2f2", text: "#991b1b", accent: "#dc2626", buttons: "#ef4444" },
+  },
+};
+
+const sectionThemeMap: Record<string, string> = {
+  home: "tech",
+  about: "sunset",
+  projects: "forest",
+  contact: "cosmic",
+};
+
+export const getSectionPalette = (
+  section: string,
+  mode: PaletteMode,
+): SectionPalette => {
+  const themeName = sectionThemeMap[section] || "tech";
+  return themePalettes[themeName][mode];
+};
 
 export const palettes = {
   dark: {
-    home: {
-      bg: "#4d515a", // gris-800 - fondo como estaba
-      text: "#f3f4f6", // gris-100 - texto como estaba
-      accent: "#ffffff", // blanco puro - título blanco
-      buttons: "#ffffff", // blanco puro - botones blancos
-    },
-    about: {
-      bg: "#1f2937", // gris-900
-      text: "#e5e7eb", // gris-200
-      accent: "#9ca3af", // gris-400
-      buttons: "#6b7280", // gris-500
-    },
-    projects: {
-      bg: "#111827", // gris-950
-      text: "#f9fafb", // gris-50
-      accent: "#d1d5db", // gris-300
-      buttons: "#9ca3af", // gris-400
-    },
-    contact: {
-      bg: "#4b5563", // gris-600
-      text: "#f9fafb", // gris-50
-      accent: "#e5e7eb", // gris-200
-      buttons: "#d1d5db", // gris-300
-    },
+    home: themePalettes.tech.dark,
+    about: themePalettes.sunset.dark,
+    projects: themePalettes.forest.dark,
+    contact: themePalettes.cosmic.dark,
   },
-
   light: {
-    home: {
-      bg: "#ffffff", // blanco puro - máximo contraste
-      text: "#030712", // gris-950 - texto muy oscuro
-      accent: "#6b7280", // gris-500 - acento gris
-      buttons: "#6b7280", // gris-500 - botones del mismo color que el título
-    },
-    about: {
-      bg: "#cedd21", // amarillo-400 - punto medio brillante
-      text: "#ffffff", // blanco puro - texto blanco
-      accent: "#ffffff", // blanco puro - título blanco
-      buttons: "#ffffff", // blanco puro - botones blancos
-    },
-    projects: {
-      bg: "#f0fdf4", // verde-50 - fondo muy claro
-      text: "#14532d", // verde-900 - texto muy oscuro
-      accent: "#16a34a", // verde-600 - acento verde
-      buttons: "#15803d", // verde-700 - botones verdes
-    },
-    contact: {
-      bg: "#faf5ff", // púrpura-50 - fondo muy claro
-      text: "#7c3aed", // púrpura-600 - texto más suave
-      accent: "#a78bfa", // púrpura-400 - acento más suave
-      buttons: "#8b5cf6", // púrpura-500 - botones más suaves
-    },
+    home: themePalettes.tech.light,
+    about: themePalettes.sunset.light,
+    projects: themePalettes.forest.light,
+    contact: themePalettes.cosmic.light,
   },
 };
