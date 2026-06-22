@@ -3,28 +3,28 @@ import { palettes } from "@/styles/palettes";
 import React, { useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Section from "../components/Sections/Sections";
+import { LanguageProvider, useLanguage } from "@/context/LanguageContext";
 type SectionId = "home" | "about" | "projects" | "contact";
 
-const Page = () => {
+function PageContent() {
   const [mode, setMode] = useState<"dark" | "light">("dark");
   const [activeSection, setActiveSection] = useState<SectionId>("home");
+  const { language, setLanguage, t } = useLanguage();
 
   const currentPalette = palettes[mode][activeSection];
-
-  // Ya no necesitamos scroll automático porque las secciones se muestran/ocultan
 
   const handleLinkClick = (id: SectionId) => {
     setActiveSection(id);
   };
 
   return (
-    <div className="flex flex-col w-full min-h-screen max-h-screen">
+    <div className="flex flex-col w-full h-screen overflow-hidden">
       <div
         style={{
           backgroundColor: currentPalette.bg,
           color: currentPalette.text,
         }}
-        className="flex flex-col m-2 border-2 border-white min-h-[95vh] max-h-[95vh] transition-colors duration-1000 ease-in-out"
+        className="flex flex-col flex-1 m-2 border-2 border-white overflow-hidden transition-colors duration-1000 ease-in-out"
       >
         <div className="flex flex-col p-4 w-full">
           <h1
@@ -34,7 +34,7 @@ const Page = () => {
             Cesar Lopez
           </h1>
           <span className="items-start font-bold text-2xl italic">
-            Back-end - Front-end
+            {t.hero.subtitle}
           </span>
         </div>
         <div className="flex-1 transition-colors duration-1000 ease-in-out">
@@ -47,22 +47,22 @@ const Page = () => {
           />
           <Section
             id="about"
-            title="About Section"
-            content="This is the about section content."
+            title={t.sections.about.title}
+            content={t.sections.about.content}
             isVisible={activeSection === "about"}
             colors={palettes[mode].about}
           />
           <Section
             id="contact"
-            title="Contact Section"
-            content="This is the contact section content."
+            title={t.sections.contact.title}
+            content={t.sections.contact.content}
             isVisible={activeSection === "contact"}
             colors={palettes[mode].contact}
           />
           <Section
             id="projects"
-            title="Projects Section"
-            content="This is the projects section content."
+            title={t.sections.projects.title}
+            content={t.sections.projects.content}
             isVisible={activeSection === "projects"}
             colors={palettes[mode].projects}
           />
@@ -76,34 +76,49 @@ const Page = () => {
         </div>
       </div>
       <div className="flex flex-row justify-between items-center">
-        <div>
+        <div className="flex gap-1 items-baseline">
           <button
             type="button"
-            className={`mx-4 ${mode === "light" ? "font-bold underline" : ""}`}
+            className={`${mode === "light" ? "font-bold underline" : ""}`}
             onClick={() => setMode("light")}
           >
-            Light
+            {t.ui.light}
           </button>
-
+          <span className="font-bold">/</span>
           <button
             type="button"
-            className={`mx-4 ${mode === "dark" ? "font-bold underline" : ""}`}
+            className={`${mode === "dark" ? "font-bold underline" : ""}`}
             onClick={() => setMode("dark")}
           >
-            Dark
+            {t.ui.dark}
           </button>
         </div>
-        <div>
-          <button type="button" className="mx-4">
+        <div className="flex gap-1 items-baseline">
+          <button
+            type="button"
+            className={`${language === "es" ? "font-bold underline" : ""}`}
+            onClick={() => setLanguage("es")}
+          >
             Español
           </button>
-          <button type="button" className="mx-4">
-            Inglish
+          <span className="font-bold">/</span>
+          <button
+            type="button"
+            className={`${language === "en" ? "font-bold underline" : ""}`}
+            onClick={() => setLanguage("en")}
+          >
+            English
           </button>
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default Page;
+export default function Page() {
+  return (
+    <LanguageProvider>
+      <PageContent />
+    </LanguageProvider>
+  );
+}

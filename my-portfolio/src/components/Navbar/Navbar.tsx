@@ -1,29 +1,22 @@
 "use client";
-
 import React from "react";
+import { useLanguage } from "@/context/LanguageContext";
 type SectionId = "home" | "about" | "projects" | "contact";
 
 interface NavbarProps {
   onLinkClick: (id: SectionId) => void;
   activeSection: SectionId;
-  colors: {
-    bg: string;
-    text: string;
-    accent: string;
-    buttons: string;
-  };
+  colors: { bg: string; text: string; accent: string; buttons: string };
 }
 
-const Navbar: React.FC<NavbarProps> = ({
-  onLinkClick,
-  activeSection,
-  colors,
-}) => {
+const Navbar: React.FC<NavbarProps> = ({ onLinkClick, activeSection, colors }) => {
+  const { t } = useLanguage();
+
   const links: { id: SectionId; label: string }[] = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "contact", label: "Contact" },
-    { id: "projects", label: "Projects" },
+    { id: "home", label: t.nav.home },
+    { id: "about", label: t.nav.about },
+    { id: "contact", label: t.nav.contact },
+    { id: "projects", label: t.nav.projects },
   ];
 
   return (
@@ -31,7 +24,6 @@ const Navbar: React.FC<NavbarProps> = ({
       <ul>
         {links.map((link) => {
           const isActive = activeSection === link.id;
-
           return (
             <li key={link.id} className="m-1">
               <button
