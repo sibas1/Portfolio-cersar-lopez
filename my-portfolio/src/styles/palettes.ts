@@ -8,24 +8,24 @@ export type SectionPalette = {
 
 const themePalettes: Record<string, { dark: SectionPalette; light: SectionPalette }> = {
   tech: {
-    dark: { bg: "#0c4a6e", text: "#e0f2fe", accent: "#38bdf8", buttons: "#7dd3fc" },
-    light: { bg: "#f0f9ff", text: "#0369a1", accent: "#0284c7", buttons: "#0ea5e9" },
+    dark: { bg: "#0f0a1e", text: "#f3e8ff", accent: "#a855f7", buttons: "#c084fc" },
+    light: { bg: "#faf5ff", text: "#3b0764", accent: "#9333ea", buttons: "#a855f7" },
   },
   sunset: {
-    dark: { bg: "#7c2d12", text: "#ffedd5", accent: "#fb923c", buttons: "#fdba74" },
-    light: { bg: "#fff7ed", text: "#9a3412", accent: "#ea580c", buttons: "#f97316" },
+    dark: { bg: "#120c22", text: "#f3e8ff", accent: "#c084fc", buttons: "#d8b4fe" },
+    light: { bg: "#fbf5ff", text: "#4c1d95", accent: "#7c3aed", buttons: "#8b5cf6" },
   },
   forest: {
-    dark: { bg: "#14532d", text: "#dcfce7", accent: "#4ade80", buttons: "#86efac" },
-    light: { bg: "#f0fdf4", text: "#166534", accent: "#16a34a", buttons: "#22c55e" },
+    dark: { bg: "#150e26", text: "#f3e8ff", accent: "#d946ef", buttons: "#e879f9" },
+    light: { bg: "#fdf4ff", text: "#581c87", accent: "#a21caf", buttons: "#c026d3" },
   },
   cosmic: {
-    dark: { bg: "#581c87", text: "#f3e8ff", accent: "#c084fc", buttons: "#d8b4fe" },
-    light: { bg: "#faf5ff", text: "#6b21a8", accent: "#9333ea", buttons: "#a855f7" },
+    dark: { bg: "#18102a", text: "#f3e8ff", accent: "#f0abfc", buttons: "#f5d0fe" },
+    light: { bg: "#fdf2ff", text: "#6b21a8", accent: "#c026d3", buttons: "#d946ef" },
   },
   coral: {
-    dark: { bg: "#7f1d1d", text: "#fee2e2", accent: "#f87171", buttons: "#fca5a5" },
-    light: { bg: "#fef2f2", text: "#991b1b", accent: "#dc2626", buttons: "#ef4444" },
+    dark: { bg: "#1b1330", text: "#f3e8ff", accent: "#f472b6", buttons: "#f9a8d4" },
+    light: { bg: "#fdf2f8", text: "#831843", accent: "#db2777", buttons: "#ec4899" },
   },
 };
 

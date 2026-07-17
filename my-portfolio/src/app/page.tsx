@@ -1,5 +1,6 @@
 "use client";
 import { palettes } from "@/styles/palettes";
+import { NoiseTexture } from "@/styles/NoiseTexture";
 import React, { useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Section from "../components/Sections/Sections";
@@ -24,59 +25,63 @@ function PageContent() {
           backgroundColor: currentPalette.bg,
           color: currentPalette.text,
         }}
-        className="flex flex-col flex-1 m-2 border-2 border-white overflow-hidden transition-colors duration-1000 ease-in-out"
+        className="relative flex flex-col flex-1 m-2 border-2 border-white overflow-hidden transition-colors duration-1000 ease-in-out"
       >
-        <div className="flex flex-col p-4 w-full">
-          <h1
-            style={{ color: currentPalette.accent }}
-            className="items-start mb-4 font-bold text-4xl"
-          >
-            Cesar Lopez
-          </h1>
-          <span className="items-start font-bold text-2xl italic">
-            {t.hero.subtitle}
-          </span>
-        </div>
-        <div className="flex-1 transition-colors duration-1000 ease-in-out">
-          <Section
-            id="home"
-            title=""
-            content=""
-            isVisible={activeSection === "home"}
-            colors={palettes[mode].home}
-          />
-          <Section
-            id="about"
-            title={t.sections.about.title}
-            content={t.sections.about.content}
-            isVisible={activeSection === "about"}
-            colors={palettes[mode].about}
-          />
-          <Section
-            id="contact"
-            title={t.sections.contact.title}
-            content={t.sections.contact.content}
-            isVisible={activeSection === "contact"}
-            colors={palettes[mode].contact}
-          />
-          <Section
-            id="projects"
-            title={t.sections.projects.title}
-            content={t.sections.projects.content}
-            isVisible={activeSection === "projects"}
-            colors={palettes[mode].projects}
-          />
-        </div>
-        <div className="flex flex-col justify-end items-end mr-10 mb-10 text-4xl">
-          <Navbar
-            onLinkClick={handleLinkClick}
-            activeSection={activeSection}
-            colors={currentPalette}
-          />
+        <NoiseTexture opacity={mode === "dark" ? 0.5 : 0.1} />
+
+        <div className="z-10 relative flex flex-col flex-1 overflow-hidden">
+          <div className="flex flex-col p-4 w-full">
+            <h1
+              style={{ color: currentPalette.accent }}
+              className="items-start mb-4 font-bold text-4xl"
+            >
+              Cesar Lopez
+            </h1>
+            <span className="items-start font-bold text-2xl italic">
+              {t.hero.subtitle}
+            </span>
+          </div>
+          <div className="flex-1 transition-colors duration-1000 ease-in-out">
+            <Section
+              id="home"
+              title=""
+              content=""
+              isVisible={activeSection === "home"}
+              colors={palettes[mode].home}
+            />
+            <Section
+              id="about"
+              title={t.sections.about.title}
+              content={t.sections.about.content}
+              isVisible={activeSection === "about"}
+              colors={palettes[mode].about}
+            />
+            <Section
+              id="contact"
+              title={t.sections.contact.title}
+              content={t.sections.contact.content}
+              isVisible={activeSection === "contact"}
+              colors={palettes[mode].contact}
+            />
+            <Section
+              id="projects"
+              title={t.sections.projects.title}
+              content={t.sections.projects.content}
+              isVisible={activeSection === "projects"}
+              colors={palettes[mode].projects}
+            />
+          </div>
+          <div className="flex flex-col justify-end items-end mr-10 mb-10 text-4xl">
+            <Navbar
+              onLinkClick={handleLinkClick}
+              activeSection={activeSection}
+              colors={currentPalette}
+            />
+          </div>
         </div>
       </div>
       <div className="flex flex-row justify-between items-center">
-        <div className="flex gap-1 items-baseline">
+        <div className="flex items-baseline gap-1">
           <button
             type="button"
             className={`${mode === "light" ? "font-bold underline" : ""}`}
@@ -93,7 +98,7 @@ function PageContent() {
             {t.ui.dark}
           </button>
         </div>
-        <div className="flex gap-1 items-baseline">
+        <div className="flex items-baseline gap-1">
           <button
             type="button"
             className={`${language === "es" ? "font-bold underline" : ""}`}

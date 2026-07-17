@@ -5,7 +5,7 @@ const es = {
     contact: { title: "Contacto", content: "¿Quieres trabajar conmigo? Contáctame." },
     projects: { title: "Proyectos", content: "Aquí están mis proyectos destacados." },
   },
-  hero: { subtitle: "Back-end - Front-end" },
+  hero: { subtitle: "Full Stack Developer | React · Next.js · Node.js · NestJS" },
   ui: { light: "Claro", dark: "Oscuro" },
 };
 
