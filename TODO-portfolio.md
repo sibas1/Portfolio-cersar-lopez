@@ -9,6 +9,8 @@
 - Estructura base Next.js con Tailwind
 - Sistema de idiomas ES/EN (`LanguageContext` + `src/data/`)
 - Metadata y título en `layout.tsx`
+- Textura de ruido (`NoiseTexture` + `public/textures/`)
+- Paleta morada por sección
 
 ### ✅ Limpieza hecha
 - Eliminado `src/config/themes.ts` (duplicaba `palettes.ts`, sin uso)
@@ -23,11 +25,17 @@
 
 #### Crítico (sin esto no es portafolio)
 - [ ] **`Section.tsx` acepta `children`** — hoy solo renderiza `<h2>` + `<p>`,
-      no hay forma de meter tarjetas, imágenes, skills o formulario
-- [ ] **Home** — poner título, tagline, foto de perfil
-- [ ] **About** — biografía real, skills, experiencia
-- [ ] **Projects** — proyectos reales con título, descripción, tecnologías, links, screenshots
-- [ ] **Contact** — formulario funcional (nombre, email, mensaje) + integración email
+      por eso la bio de About es un bloque de texto corrido y no hay forma de
+      meter tarjetas, skills, imágenes o formulario
+- [ ] **About en español** — `es.ts` sigue con el placeholder
+      ("Soy desarrollador backend y frontend apasionado...").
+      El texto real solo existe en `en.ts`
+- [ ] **About EN: corregir puntuación** — le faltan puntos y espacios:
+      "WebSocketsI stand out", "keep growing Main stack:"
+- [ ] **Projects** — no hay datos de proyectos. Solo el placeholder
+      "Aquí están mis proyectos destacados." Falta título, descripción,
+      tecnologías, links y screenshots
+- [ ] **Contact** — sin formulario. Solo una línea de texto
 
 #### Importante
 - [ ] Foto de perfil en `public/images/`
