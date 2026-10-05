@@ -19,7 +19,10 @@ function PageContent() {
   };
 
   return (
-    <div className="flex flex-col w-full h-screen overflow-hidden">
+    <div
+      style={{ backgroundColor: currentPalette.bg }}
+      className="flex flex-col w-full h-screen overflow-hidden transition-colors duration-1000 ease-in-out"
+    >
       <div
         style={{
           backgroundColor: currentPalette.bg,
