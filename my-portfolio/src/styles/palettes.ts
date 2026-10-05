@@ -29,21 +29,6 @@ const themePalettes: Record<string, { dark: SectionPalette; light: SectionPalett
   },
 };
 
-const sectionThemeMap: Record<string, string> = {
-  home: "tech",
-  about: "sunset",
-  projects: "forest",
-  contact: "cosmic",
-};
-
-export const getSectionPalette = (
-  section: string,
-  mode: PaletteMode,
-): SectionPalette => {
-  const themeName = sectionThemeMap[section] || "tech";
-  return themePalettes[themeName][mode];
-};
-
 export const palettes = {
   dark: {
     home: themePalettes.tech.dark,
